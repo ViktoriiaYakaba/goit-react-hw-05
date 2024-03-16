@@ -1,0 +1,30 @@
+.header{
+    padding:  20px ;
+    margin-bottom: 16px;
+    border-bottom: 1px solid black;
+}
+
+.list{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 30px;
+    
+}
+
+.link{
+    padding: 8px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.14286;
+    letter-spacing: -0.02em;
+}
+
+.active {
+    color: white;
+    background-color: orangered;
+    transition:  color 250ms linear;
+}
