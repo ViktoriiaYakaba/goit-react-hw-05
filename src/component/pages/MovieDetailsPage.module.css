@@ -1,0 +1,53 @@
+.container{
+    display: flex;
+    gap: 20px;
+    align-items: start;
+    justify-content: start;
+    padding-bottom: 15px;
+    border-bottom: 1px solid black;
+}
+
+.list{
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+}
+
+.title{
+    color: black;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.21;
+    letter-spacing: -0.03em;
+}
+
+.overview{
+    color: black;
+    text-align: start;
+    font-size: 16px;
+    line-height: 1.29;
+    letter-spacing: -0.02em;
+}
+
+span{
+    font-weight: 600;
+}
+
+.genres{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-size: 16px;
+    line-height: 1.29;
+    letter-spacing: -0.02em;
+    color: black;
+}
+
+.score{
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.29;
+    letter-spacing: -0.02em;
+    color: black;
+}
+

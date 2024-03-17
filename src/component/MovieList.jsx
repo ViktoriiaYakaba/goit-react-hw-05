@@ -13,7 +13,6 @@ const MovieList = () => {
       const movies = await fetchTrendingMovies(); 
       setTrendingMovies(movies);
     };
-
     fetchMovies();
   }, []);
 

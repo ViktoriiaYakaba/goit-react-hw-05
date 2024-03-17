@@ -8,6 +8,7 @@ const MoviesPage = lazy(() => import('./pages/HomePage'));
 const MovieDetailsPage = lazy(() => import('./pages/MovieDetailsPage'));
 
 
+
 const App = () => {
     return (
         <div>

@@ -42,23 +42,22 @@ export const searchMovies = async (query) => {
 export const fetchMovieDetails = async (movieId) => {
     try {
         const response = await axios.get(
-            'https://api.themoviedb.org/3/search/movie',
+            `https://api.themoviedb.org/3/movie/${movieId}`,
             {
-        
                 headers: {
                     Authorization: `Bearer ${API_KEY}`,
-                    movieId,
                 },
             }
         );
         return response.data;
     } catch (error) {
         console.error('Error fetching movie details:', error);
-        return [];
+        return null; 
     }
 };
 
-export const fetchMovieCredits = async (movieId) => {
+
+export const fetchMovieCast = async (movieId) => {
     try {
         const response = await axios.get(
             'https://api.themoviedb.org/3/search/movie',
