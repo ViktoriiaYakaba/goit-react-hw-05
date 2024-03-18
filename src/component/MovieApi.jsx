@@ -25,10 +25,11 @@ export const searchMovies = async (query) => {
         const response = await axios.get(
             'https://api.themoviedb.org/3/search/movie',
             {
-        
+                params: {
+                    query: query
+                },
                 headers: {
                     Authorization: `Bearer ${API_KEY}`,
-                    query,
                 },
             }
         );
@@ -38,6 +39,7 @@ export const searchMovies = async (query) => {
         return [];
     }
 };
+
 
 export const fetchMovieDetails = async (movieId) => {
     try {

@@ -18,7 +18,7 @@ const MovieDetails = () => {
     }, [movieId]); 
 
  const formatScore = (score) => {
-        return `${score * 10}%`;
+        return `${score}%`;
     };
 
      return (
@@ -36,12 +36,15 @@ const MovieDetails = () => {
              )}
              
            {movie && (
-                <div>
-                    <h4>Aditional information</h4>
-                    <ul>
+                <div className={css.info}>
+                    <h4 className={css.titleInfo}>Aditional information</h4>
+                    <ul className={css.listInfo}>
                         <li>
-                            <Link to={`/movies/${movieId}/cast`}>Movie Cast</Link>
-                        </li>
+                            <Link to={`/movies/${movieId}/cast`} className={css.itemInfo}>Movie Cast</Link>
+                         </li>
+                         <li>
+                             <Link to={`/movies/${movieId}/reviews`} className={css.itemInfo}>Movie Reviews</Link>
+                         </li>
                     </ul>
                 </div>
             )}
