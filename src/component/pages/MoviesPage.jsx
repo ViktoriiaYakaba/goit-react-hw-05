@@ -3,17 +3,23 @@ import { searchMovies } from '../MovieApi';
 import { NavLink } from 'react-router-dom';
 import css from './MoviesPage.module.css';
 
-
 const MoviesPage = () => {
     const [query, setQuery] = useState('');
     const [movies, setMovies] = useState([]);
+    const [error, setError] = useState(null);
 
     const handleSearch = async () => {
         try {
             const results = await searchMovies(query);
-            setMovies(results);
+            if (results.length === 0) {
+                setError("No movies found for the given query.");
+            } else {
+                setMovies(results);
+                setError(null); 
+            }
         } catch (error) {
             console.error('Error searching movies:', error);
+            setError("An error occurred while searching for movies.");
         }
     };
 
@@ -28,6 +34,8 @@ const MoviesPage = () => {
                 className={css.input}
             />
             <button onClick={handleSearch} className={css.btn}>Search</button>
+
+            {error && <p className={css.error}>{error}</p>}
 
             <ul className={css.list}>
                 {movies.map(movie => (

@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { fetchMovieDetails } from "../MovieApi";
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, Outlet } from 'react-router-dom';
 import css from './MovieDetailsPage.module.css';
+import { MdArrowBack } from "react-icons/md";
 
 
 const MovieDetails = () => {
@@ -22,7 +23,8 @@ const MovieDetails = () => {
     };
 
      return (
-        <div >
+         <div >
+            <Link to='/' className={css.btnBack}><MdArrowBack />Go back</Link>
             {movie && (
                 <div className={css.container}>
                     <img src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.title} width='250'/>
@@ -39,13 +41,15 @@ const MovieDetails = () => {
                 <div className={css.info}>
                     <h4 className={css.titleInfo}>Aditional information</h4>
                     <ul className={css.listInfo}>
+                        
                         <li>
                             <Link to={`/movies/${movieId}/cast`} className={css.itemInfo}>Movie Cast</Link>
                          </li>
                          <li>
                              <Link to={`/movies/${movieId}/reviews`} className={css.itemInfo}>Movie Reviews</Link>
                          </li>
-                    </ul>
+                     </ul>
+                     <Outlet />
                 </div>
             )}
         </div>

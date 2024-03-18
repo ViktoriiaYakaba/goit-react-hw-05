@@ -6,6 +6,7 @@
     padding-bottom: 15px;
     border-bottom: 1px solid black;
     padding-left: 15px;
+    padding-top: 15px;
 }
 
 .list{
@@ -84,7 +85,25 @@ span{
     letter-spacing: -0.03em;
 }
 
-.itemInfo:hover{
+.itemInfo:hover, 
+.itemInfo:active{
 color: orangered;
 transition: 300ms linear, color 300ms linear;
+}
+
+.btnBack{
+    text-decoration: none;
+    color: black;
+    margin-left: 15px;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.21;
+    letter-spacing: -0.03em;
+    display: flex;
+        gap: 3px;
+}
+
+.btnBack:hover{
+    color: orangered;
+    transition: 300ms linear, color 300ms linear;
 }
