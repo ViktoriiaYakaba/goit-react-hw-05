@@ -1,6 +1,6 @@
 
 import{ useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { fetchTrendingMovies } from './MovieApi'; 
 import css from './MovieList.module.css';
 
@@ -20,9 +20,9 @@ const MovieList = () => {
     <ul className={css.list}>
       {trendingMovies.map(movie => (
         <li key={movie.id}>
-          <Link to={`/movies/${movie.id}`} state={{ from: location }} className={css.link}>
+          <NavLink to={`/movies/${movie.id}`} state={{ from: location }} className={css.link}>
             {movie.title}
-          </Link>
+          </NavLink>
         </li>
       ))}
     </ul>

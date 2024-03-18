@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { fetchMovieDetails } from "../MovieApi";
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import css from './MovieDetailsPage.module.css';
+
 
 const MovieDetails = () => {
     const { movieId } = useParams();
@@ -34,18 +35,21 @@ const MovieDetails = () => {
                  </div>
              )}
              
-              {movie && (
+           {movie && (
                 <div>
-                     <h4>Aditional information</h4>
-                     
+                    <h4>Aditional information</h4>
+                    <ul>
+                        <li>
+                            <Link to={`/movies/${movieId}/cast`}>Movie Cast</Link>
+                        </li>
+                    </ul>
                 </div>
             )}
-
         </div>
-        
-    );
   
-};
+)};
 
 export default MovieDetails;
+
+
 

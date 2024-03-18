@@ -56,35 +56,34 @@ export const fetchMovieDetails = async (movieId) => {
     }
 };
 
-
 export const fetchMovieCast = async (movieId) => {
     try {
         const response = await axios.get(
-            'https://api.themoviedb.org/3/search/movie',
+            `https://api.themoviedb.org/3/movie/${movieId}/credits`,
             {
-        
                 headers: {
                     Authorization: `Bearer ${API_KEY}`,
-                    movieId,
                 },
             }
         );
         return response.data.cast;
     } catch (error) {
-          console.error('Error fetching movie credits:', error);
+        console.error('Error fetching movie credits:', error);
         return [];
     }
 };
 
+
+
+
 export const fetchMovieReviews = async (movieId) => {
     try {
         const response = await axios.get(
-            'https://api.themoviedb.org/3/search/movie',
+            `https://api.themoviedb.org/3//movie/${movieId}/reviews`,
             {
         
                 headers: {
                     Authorization: `Bearer ${API_KEY}`,
-                    movieId,
                 },
             }
         );
