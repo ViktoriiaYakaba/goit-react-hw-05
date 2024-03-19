@@ -3,6 +3,7 @@ import { searchMovies } from '../MovieApi';
 import { NavLink } from 'react-router-dom';
 import css from './MoviesPage.module.css';
 
+
 const MoviesPage = () => {
     const [query, setQuery] = useState('');
     const [movies, setMovies] = useState([]);
