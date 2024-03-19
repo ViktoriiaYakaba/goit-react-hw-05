@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetchMovieDetails } from "../MovieApi";
+import { fetchMovieDetails } from "../component/MovieApi";
 import { useParams, Link, Outlet } from 'react-router-dom';
 import css from './MovieDetailsPage.module.css';
 import { MdArrowBack } from "react-icons/md";

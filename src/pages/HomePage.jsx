@@ -1,4 +1,4 @@
-import MovieList from "../MovieList";
+import MovieList from "../component/MovieList";
 import css from './HomePage.module.css';
 
 function HomePage() {
