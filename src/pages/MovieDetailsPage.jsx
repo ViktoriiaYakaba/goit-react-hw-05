@@ -9,6 +9,8 @@ const MovieDetails = () => {
     const [movie, setMovie] = useState(null);
     const location = useLocation();
     const backLinkRef = useRef(location.state);
+    
+    console.log(backLinkRef)
 
     useEffect(() => {
         const detailsMovie = async () => {
@@ -21,6 +23,8 @@ const MovieDetails = () => {
     const formatScore = (score) => {
         return `${score}%`;
     };
+
+    console.log(location)
 
     return (
         <div >
