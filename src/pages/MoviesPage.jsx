@@ -1,27 +1,41 @@
-import { useState } from 'react';
-import { searchMovies } from '../MovieApi';
-import { NavLink } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { searchMovies } from '../components/MovieApi';
+import { useSearchParams } from 'react-router-dom';
 import css from './MoviesPage.module.css';
+import MovieList from '../components/MovieList';
 
 
 const MoviesPage = () => {
     const [query, setQuery] = useState('');
     const [movies, setMovies] = useState([]);
     const [error, setError] = useState(null);
+    const [searchParams, setSearchParams] = useSearchParams();
 
-    const handleSearch = async () => {
-        try {
-            const results = await searchMovies(query);
-            if (results.length === 0) {
-                setError("No movies found for the given query.");
-            } else {
-                setMovies(results);
-                setError(null); 
+   useEffect(() => {
+        const fetchMovies = async () => {
+            try {
+                const results = await searchMovies(query);
+                if (results.length === 0) {
+                    setError("No movies found for the given query.");
+                } else {
+                    setMovies(results);
+                    setError(null);
+                }
+            } catch (error) {
+                console.error('Error searching movies:', error);
+                setError("An error occurred while searching for movies.");
             }
-        } catch (error) {
-            console.error('Error searching movies:', error);
-            setError("An error occurred while searching for movies.");
+        };
+
+        if (searchParams.has('query')) {
+            const queryParam = searchParams.get('query');
+            setQuery(queryParam);
+            fetchMovies();
         }
+    }, [searchParams]);
+
+    const handleSearch = () => {
+        setSearchParams({ query });
     };
 
     return (
@@ -38,15 +52,7 @@ const MoviesPage = () => {
 
             {error && <p className={css.error}>{error}</p>}
 
-            <ul className={css.list}>
-                {movies.map(movie => (
-                    <li key={movie.id}>
-                        <NavLink to={`/movies/${movie.id}`} className={css.link}>
-                            {movie.title}
-                        </NavLink>
-                    </li>
-                ))}
-            </ul>
+           <MovieList movies={movies} />
         </div>
     );
 };
