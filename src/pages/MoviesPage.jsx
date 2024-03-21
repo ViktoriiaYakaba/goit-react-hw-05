@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { searchMovies } from '../components/MovieApi';
 import { useSearchParams } from 'react-router-dom';
 import css from './MoviesPage.module.css';
@@ -31,21 +31,25 @@ const MoviesPage = () => {
         }
     }, [searchParams]);
 
-    const handleSearch = () => {
-        setSearchParams({ query: searchParams.get('query') });
+    const handleSearch = async (e) => {
+        e.preventDefault();
+        const query = e.target.elements.query.value;
+        setSearchParams({ query });
     };
 
     return (
         <div className={css.container}>
             <h2 className={css.title}>Search Movies</h2>
-            <input
-                type="text"
-                value={searchParams.get('query') || ''}
-                onChange={(e) => setSearchParams({ query: e.target.value })}
-                placeholder="Search for a movie..."
-                className={css.input}
-            />
-            <button onClick={handleSearch} className={css.btn}>Search</button>
+            <form onSubmit={handleSearch}>
+                <input
+                    type="text"
+                    name="query"
+                    defaultValue={searchParams.get('query') || ''}
+                    placeholder="Search for a movie..."
+                    className={css.input}
+                />
+                <button type="submit" className={css.btn}>Search</button>
+            </form>
 
             {error && <p className={css.error}>{error}</p>}
 
@@ -55,5 +59,6 @@ const MoviesPage = () => {
 };
 
 export default MoviesPage;
+
 
 
